@@ -1,0 +1,13 @@
+config EYELASH_PERIPHERAL_STATUS_SCREEN
+    bool "Tela custom do periferico (nome fixo + bateria) no OLED da metade"
+    default n
+    help
+      Quando habilitado, fornece um custom status screen para as metades
+      (perifericos) que mostra um texto fixo (CONFIG_EYELASH_PERIPHERAL_NAME)
+      e o percentual de bateria, no lugar da animacao do nice_oled.
+      Requer CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM=y na mesma build.
+
+config EYELASH_PERIPHERAL_NAME
+    string "Texto fixo mostrado no OLED desta metade"
+    default "Sofle"
+    depends on EYELASH_PERIPHERAL_STATUS_SCREEN
