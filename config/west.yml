@@ -2,23 +2,39 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: gpeye
-      url-base: https://github.com/GPeye
-    - name: tokyo2006
-      url-base: https://github.com/tokyo2006
+    - name: mctechnology17
+      url-base: https://github.com/mctechnology17
+    - name: cormoran
+      url-base: https://github.com/cormoran
     - name: englmaxi
       url-base: https://github.com/englmaxi
   projects:
-    - name: mario-peripheral-animation
-      remote: gpeye
-      revision: main 
+    # ZMK base = mesmo fork do projeto zmk-sofle-oled (suporte DYA Studio)
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3.0
+      remote: cormoran
+      revision: v0.3-branch+dya
       import: app/west.yml
-    - name: prospector-zmk-module                 # <--- and these
-      remote: tokyo2006                          # <---
-      revision: micro_spi2  
+    # Modulos DYA (cormoran) — necessarios pro keymap e relay de estado pros perifericos
+    - name: zmk-behavior-runtime-sensor-rotate
+      remote: cormoran
+      revision: main
+    - name: zmk-module-ble-management
+      remote: cormoran
+      revision: zmk-v0.3.0.0
+    - name: zmk-module-battery-history
+      remote: cormoran
+      revision: main
+    - name: zmk-module-settings-rpc
+      remote: cormoran
+      revision: main
+    - name: zmk-module-runtime-input-processor
+      remote: cormoran
+      revision: zmk-v0.3.0.0
+    # OLED das metades (mesmo modulo do projeto oled)
+    - name: zmk-nice-oled
+      remote: mctechnology17
+      revision: main
+    # OLED do dongle (central)
     - name: zmk-dongle-display
       remote: englmaxi
       revision: v0.3
